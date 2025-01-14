@@ -1,0 +1,28 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Authenticate with Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
+
+    - name: Configure Docker to use Artifact Registry
+      run: gcloud auth configure-docker europe-docker.pkg.dev
+
+    - name: Build Docker image
+      run: docker build -t europe-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/websocket-server .
+
+    - name: Push Docker image
+      run: docker push europe-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/websocket-server
