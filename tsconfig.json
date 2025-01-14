@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2016", /* Modern JavaScript output. */
+    "module": "commonjs", /* CommonJS for Node.js. */
+    "outDir": "./build", /* Output directory for compiled files. */
+    "rootDir": "./src", /* Root directory for TypeScript files. */
+    "strict": true, /* Enable all strict type-checking options. */
+    "esModuleInterop": true, /* Better compatibility with CommonJS. */
+    "forceConsistentCasingInFileNames": true, /* Enforce consistent file casing. */
+    "skipLibCheck": true, /* Skip type-checking in .d.ts files. */
+    "sourceMap": true /* Generate source maps for easier debugging. */
+  },
+  "include": [
+    "src/**/*.ts"
+  ], /* Include all TypeScript files in src. */
+  "exclude": [
+    "node_modules",
+    "build"
+  ] /* Exclude unnecessary files. */
+}
